@@ -2,10 +2,6 @@ package ru.ifmo.lab2.moves;
 
 import ru.ifmo.se.pokemon.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public final class Confide extends SpecialMove {
     public Confide() {
         super(Type.NORMAL, 0, 1.0);

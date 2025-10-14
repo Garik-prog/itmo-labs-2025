@@ -12,10 +12,8 @@ public final class SwordsDance extends StatusMove {
         pokemon.setMod(Stat.ATTACK, 2);
     }
 
-    // Переопределяем метод для описания атаки
     @Override
     protected String describe() {
         return "Swords Dance. Может повысить свою атаку на 2";
-
     }
 }

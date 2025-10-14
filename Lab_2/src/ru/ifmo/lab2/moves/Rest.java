@@ -9,7 +9,6 @@ public final class Rest extends StatusMove {
 
     @Override
     protected void applySelfEffects(Pokemon pokemon) {
-        // Создаем эффект сна, который длится 2 хода
         Effect sleepEffect = new Effect().turns(2).condition(Status.SLEEP);
         pokemon.addEffect(sleepEffect);
 

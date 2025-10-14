@@ -11,6 +11,4 @@ public class Rattata extends Pokemon {
         setType(Type.NORMAL);
         setMove(new Rest(), new Crunch(), new Bite());
     }
-
-
 }

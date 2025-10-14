@@ -2,7 +2,7 @@ package ru.ifmo.lab2.moves;
 
 import ru.ifmo.se.pokemon.*;
 
-public class Facade extends PhysicalMove {
+public final class Facade extends PhysicalMove {
     public Facade() {
         super(Type.DARK, 70, 1.0);
     }
