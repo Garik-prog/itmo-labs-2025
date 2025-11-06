@@ -1,0 +1,3 @@
+Main-Class: ru.ifmo.lab2.Lab_2 
+Class-Path: lib/Pokemon.jar 
+ 
