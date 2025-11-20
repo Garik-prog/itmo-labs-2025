@@ -1,0 +1,14 @@
+objects\Porridge.class
+objects\Eatable.class
+objects\Newspaper.class
+heroes\Flyable.class
+objects\Food.class
+Story.class
+heroes\NoFoodException.class
+objects\Brioche.class
+objects\BriocheType.class
+heroes\Carlson.class
+objects\Grain.class
+objects\GrainType.class
+heroes\Boy.class
+heroes\Human.class

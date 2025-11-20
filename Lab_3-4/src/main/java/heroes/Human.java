@@ -34,7 +34,7 @@ public abstract class Human {
         if (food == null) throw new NoFoodException("No such food to eat.");
 
         food.endEating();
-        System.out.println(food.toString() + " was eating full!");
+        System.out.println(food + " was eating full!");
     }
 
     public void endEatingAll(Food... food) throws NoFoodException {

@@ -4,18 +4,18 @@ import java.util.Objects;
 
 public record Newspaper(int pages, String name, String text) {
     public void read() {
-        System.out.println("Reading newspaper '" + name + "'");
+        System.out.println(STR."Reading newspaper '\{name}'");
 
         try {
             for (int i = 1; i <= pages; i++) {
-                System.out.println("\tReading page[" + i + "]");
+                System.out.println(STR."\tReading page[\{i}]");
                 Thread.sleep(200);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Text { " + text.substring(0, 30).concat("...") + " } has been read!");
+        System.out.println(STR."Text { \{text.substring(0, 30).concat("...")} } has been read!");
     }
 
     @Override
@@ -25,15 +25,17 @@ public record Newspaper(int pages, String name, String text) {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Newspaper other)) return false;
-        if (obj.hashCode() != hashCode()) return false;
-        return this.name.equals(other.name) && this.pages == other.pages && this.text.equals(other.text);
+        if (!(obj instanceof Newspaper(int pages1, String name1, String text1))) return false;
+        return this.name.equals(name1) && this.pages == pages1 && this.text.equals(text1);
     }
-
 
 
     @Override
     public String toString() {
-        return getClass() + " name: " + name + "\n pages: " + pages + " \n text:\n " + text;
+        return STR."""
+\{getClass()} name: \{name}
+ pages: \{pages}\s
+ text:
+ \{text}""";
     }
 }

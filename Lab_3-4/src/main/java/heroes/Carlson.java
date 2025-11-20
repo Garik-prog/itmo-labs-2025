@@ -28,9 +28,9 @@ public final class Carlson extends Human implements Flyable {
     @Override
     public void endEating(Food food) throws NoFoodException {
         super.endEating(food);
-         if (food.getClass().equals(Porridge.class)) {
-             System.out.println(name + " is chewing loudly... As always...");
-         }
+        if (food.getClass().equals(Porridge.class)) {
+            System.out.println(name + " is chewing loudly... As always...");
+        }
     }
 
     @Override
@@ -45,9 +45,8 @@ public final class Carlson extends Human implements Flyable {
 
     @Override
     public boolean equals(Object obj) {
-        if  (obj == null) return false;
+        if (obj == null) return false;
         if (!(obj instanceof Carlson other)) return false;
-        if (obj.hashCode() != hashCode()) return false;
 
         return other.name.equals(name) && other.age == age;
     }

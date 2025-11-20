@@ -44,9 +44,8 @@ public final class Boy extends Human {
 
     @Override
     public boolean equals(Object obj) {
-        if  (obj == null) return false;
+        if (obj == null) return false;
         if (!(obj instanceof Boy other)) return false;
-        if (obj.hashCode() != hashCode()) return false;
         return other.name.equals(name) && other.age == age;
     }
 

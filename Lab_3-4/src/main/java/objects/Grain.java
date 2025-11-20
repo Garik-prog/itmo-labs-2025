@@ -1,7 +1,5 @@
 package objects;
 
-import heroes.Carlson;
-
 import java.util.Objects;
 
 public class Grain extends Food {
@@ -14,12 +12,12 @@ public class Grain extends Food {
 
     @Override
     public void startEating() {
-        System.out.println("\tGrain " + grainType + " is cracking!");
+        System.out.println(STR."\tGrain \{grainType} is cracking!");
     }
 
     @Override
     public void endEating() {
-        System.out.println("\tGrain " + grainType + " was eating");
+        System.out.println(STR."\tGrain \{grainType} was eating");
     }
 
     @Override
@@ -31,13 +29,12 @@ public class Grain extends Food {
     public boolean equals(Object obj) {
         if (obj == null) return false;
         if (!(obj instanceof Grain other)) return false;
-        if (obj.hashCode() != hashCode()) return false;
 
         return Objects.equals(other.grainType, grainType);
     }
 
     @Override
     public String toString() {
-        return "Grain {" + " grainType = " + grainType + " } ";
+        return STR."Grain { grainType = \{grainType} }";
     }
 }
