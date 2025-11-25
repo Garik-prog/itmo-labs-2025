@@ -33,7 +33,7 @@ public record Newspaper(int pages, String name, String text) {
     @Override
     public String toString() {
         return STR."""
-\{getClass()} name: \{name}
+ \{getClass()} name: \{name}
  pages: \{pages}\s
  text:
  \{text}""";
