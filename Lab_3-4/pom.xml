@@ -17,7 +17,7 @@
     </properties>
 
     <build>
-        <sourceDirectory>src</sourceDirectory> <!-- Указываем старую папку -->
+        <sourceDirectory>src</sourceDirectory>
 
         <plugins>
             <plugin>
