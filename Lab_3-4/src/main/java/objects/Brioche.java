@@ -20,7 +20,7 @@ public final class Brioche extends Food {
     public void endEating() {
         super.endEating();
         if (grains.isEmpty()) {
-            System.out.println(STR."Brioche \{type} without grains was eaten!");
+            System.out.println("Brioche " + type + " without grains was eaten!");
         } else {
             for (Grain grain : grains) {
                 grain.endEating();
@@ -32,9 +32,9 @@ public final class Brioche extends Food {
     public void startEating() {
         super.startEating();
         if (grains.isEmpty()) {
-            System.out.println(STR."Brioche \{type} without grains!");
+            System.out.println("Brioche " + type + " without grains!");
         } else {
-            System.out.println(STR."Start eating Brioche \{type}");
+            System.out.println("Start eating Brioche " + type);
 
             for (Grain grain : grains) {
                 grain.startEating();
@@ -62,9 +62,9 @@ public final class Brioche extends Food {
     @Override
     public String toString() {
         if (grains.isEmpty()) {
-            return STR."Brioche \{type} without grains";
+            return "Brioche " + type + " without grains";
         } else {
-            return STR."Brioche \{type} with grains";
+            return "Brioche " + type + " with grains";
         }
     }
 }

@@ -12,12 +12,12 @@ public class Grain extends Food {
 
     @Override
     public void startEating() {
-        System.out.println(STR."\tGrain \{grainType} is cracking!");
+        System.out.println("\tGrain " + grainType + " is cracking!");
     }
 
     @Override
     public void endEating() {
-        System.out.println(STR."\tGrain \{grainType} was eating");
+        System.out.println("\tGrain " + grainType + " was eating");
     }
 
     @Override
@@ -28,13 +28,14 @@ public class Grain extends Food {
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
-        if (!(obj instanceof Grain other)) return false;
+        if (!(obj instanceof Grain)) return false;
+        Grain other = (Grain) obj;
 
         return Objects.equals(other.grainType, grainType);
     }
 
     @Override
     public String toString() {
-        return STR."Grain { grainType = \{grainType} }";
+        return "Grain { grainType = " + grainType + " }";
     }
 }
