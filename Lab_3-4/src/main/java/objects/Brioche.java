@@ -19,12 +19,8 @@ public final class Brioche extends Food {
     @Override
     public void endEating() {
         super.endEating();
-        if (grains.isEmpty()) {
-            System.out.println("Brioche " + type + " without grains was eaten!");
-        } else {
-            for (Grain grain : grains) {
-                grain.endEating();
-            }
+        for (Grain grain : grains) {
+            grain.endEating();
         }
     }
 

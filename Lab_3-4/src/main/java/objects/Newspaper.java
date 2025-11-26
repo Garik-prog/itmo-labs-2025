@@ -3,7 +3,7 @@ package objects;
 import java.util.Objects;
 
 public record Newspaper(int pages, String name, String text) {
-    public void read() {
+    public void read()  {
         System.out.println("Reading newspaper '" + name + "'");
 
         try {
