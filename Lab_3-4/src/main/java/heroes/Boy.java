@@ -49,8 +49,4 @@ public final class Boy extends Human {
         return other.name.equals(name) && other.age == age;
     }
 
-    @Override
-    public String toString() {
-        return name + " " + age + " y.o.";
-    }
 }

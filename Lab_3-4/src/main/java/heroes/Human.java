@@ -64,4 +64,8 @@ public abstract class Human {
         long after = System.currentTimeMillis();
         System.out.println(name + " has been reading newspaper in " + (int) ((after - before) / 1000) + " seconds!");
     }
+
+    public String toString() {
+        return name + " " + age + " y.o.";
+    }
 }

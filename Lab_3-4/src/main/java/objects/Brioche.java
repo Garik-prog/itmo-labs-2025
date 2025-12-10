@@ -52,7 +52,7 @@ public final class Brioche extends Food {
         if (obj == null) return false;
         if (!(obj instanceof Brioche other)) return false;
         if (this == obj) return true;
-        return Objects.equals(grains, other.grains) && type == other.type;
+        return Objects.equals(grains, other.grains) && type == other.type && Objects.equals(getIngredients(), other.getIngredients());
     }
 
     @Override

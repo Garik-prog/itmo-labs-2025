@@ -30,8 +30,7 @@ import objects.*;
         }
 
         Food[] brioches = new Food[]{
-                new Brioche(BriocheType.CARDAMOM, new Grain(GrainType.WHEAT)),
-                new Brioche(BriocheType.CHOCOLATE)
+                new Brioche(BriocheType.CARDAMOM, new Grain(GrainType.WHEAT))
         };
 
         try {

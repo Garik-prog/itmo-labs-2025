@@ -50,9 +50,4 @@ public final class Carlson extends Human implements Flyable {
 
         return other.name.equals(name) && other.age == age;
     }
-
-    @Override
-    public String toString() {
-        return name + " " + age + " y.o.";
-    }
 }
