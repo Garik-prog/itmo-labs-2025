@@ -1,0 +1,52 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+@argfile
+-encoding
+'UTF-8'
+-protected
+--release
+17
+-sourcepath
+'B:/ITMO/1 курс/1 сем/itmo-labs-2025/Lab_5/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'B:/ITMO/1 курс/1 сем/itmo-labs-2025/Lab_5/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Lab_5 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Lab_5 1.0-SNAPSHOT API'
+commands
+console
+manager
+models
+'B:/ITMO/1 курс/1 сем/itmo-labs-2025/Lab_5/src/main/java/Main.java'
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\src\main\java\Main.java = 1772184638231
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\src\main\java = 1772184638232
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\allclasses-index.html = 1772185627777
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\allpackages-index.html = 1772185627781
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\element-list = 1772185627436
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\help-doc.html = 1772185627862
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\index-all.html = 1772185627844
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\index.html = 1772185627744
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\Main.html = 1772185627273
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\member-search-index.js = 1772185627795
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\module-search-index.js = 1772185627786
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\overview-summary.html = 1772185627855
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\overview-tree.html = 1772185627739
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\package-search-index.js = 1772185627789
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\package-summary.html = 1772185627445
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\package-tree.html = 1772185627453
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\package-use.html = 1772185627710
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\search.html = 1772185627849
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\tag-search-index.js = 1772185627799
+B:\ITMO\1 курс\1 сем\itmo-labs-2025\Lab_5\target\reports\apidocs\type-search-index.js = 1772185627792
