@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flats>
-    <flat key="Ljv">
+    <flat key="Ljv1">
         <id>1</id>
         <name>xgfhnn</name>
         <x>1</x>
@@ -15,6 +15,4 @@
         <houseYear>5</houseYear>
         <houseFlatsOnFloor>2</houseFlatsOnFloor>
     </flat>
-
-
 </flats>
