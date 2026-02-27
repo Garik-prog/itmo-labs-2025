@@ -86,6 +86,7 @@ public class ObjectReader {
             }
         }
 
+
         // Ввод перечислений (могут быть null)
         flat.setFurnish(readEnum(Furnish.class, "furnish (возможные значения: DESIGNER, NONE, FINE, BAD, LITTLE; пустая строка для null)"));
         flat.setView(readEnum(View.class, "view (BAD, NORMAL, GOOD; пустая строка для null)"));
