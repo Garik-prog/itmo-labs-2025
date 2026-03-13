@@ -2,6 +2,7 @@ package commands;
 
 import manager.CollectionManager;
 import console.InputProvider;
+import java.nio.*;
 
 /**
  * Команда для очистки коллекции (удаления всех элементов).

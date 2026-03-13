@@ -148,20 +148,20 @@ public class UpdateCommand extends AbstractCommand {
      * @return текущее значение (может быть null)
      */
     private Object getCurrentValue(Flat flat, int fieldNumber) {
-        switch (fieldNumber) {
-            case 1: return flat.getName();
-            case 2: return flat.getCoordinates().getX();
-            case 3: return flat.getCoordinates().getY();
-            case 4: return flat.getArea(); // автобоксинг в Long
-            case 5: return flat.getNumberOfRooms();
-            case 6: return flat.getFurnish();
-            case 7: return flat.getView();
-            case 8: return flat.getTransport();
-            case 9: return flat.getHouse() != null ? flat.getHouse().getName() : null;
-            case 10: return flat.getHouse() != null ? flat.getHouse().getYear() : null;
-            case 11: return flat.getHouse() != null ? flat.getHouse().getNumberOfFlatsOnFloor() : null;
-            default: return null;
-        }
+        return switch (fieldNumber) {
+            case 1 -> flat.getName();
+            case 2 -> flat.getCoordinates().getX();
+            case 3 -> flat.getCoordinates().getY();
+            case 4 -> flat.getArea(); // автобоксинг в Long
+            case 5 -> flat.getNumberOfRooms();
+            case 6 -> flat.getFurnish();
+            case 7 -> flat.getView();
+            case 8 -> flat.getTransport();
+            case 9 -> flat.getHouse() != null ? flat.getHouse().getName() : null;
+            case 10 -> flat.getHouse() != null ? flat.getHouse().getYear() : null;
+            case 11 -> flat.getHouse() != null ? flat.getHouse().getNumberOfFlatsOnFloor() : null;
+            default -> null;
+        };
     }
 
     /**
