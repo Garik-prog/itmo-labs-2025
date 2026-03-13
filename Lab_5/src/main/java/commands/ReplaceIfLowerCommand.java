@@ -4,32 +4,12 @@ import manager.CollectionManager;
 import console.InputProvider;
 import models.Flat;
 
-/**
- * Команда для замены значения по ключу, если новое значение меньше старого.
- * Сохраняет id и дату создания старого объекта.
- *
- * @see AbstractCommand
- */
 public class ReplaceIfLowerCommand extends AbstractCommand {
 
-    /**
-     * Создаёт команду replace_if_lowe.
-     *
-     * @param collectionManager менеджер коллекции
-     */
     public ReplaceIfLowerCommand(CollectionManager collectionManager) {
         super(collectionManager);
     }
 
-    /**
-     * Выполняет команду replace_if_lowe.
-     * Проверяет наличие ключа, читает новый объект Flat,
-     * сравнивает с существующим и заменяет, если новый меньше.
-     *
-     * @param args аргументы команды (ожидается ключ)
-     * @param provider источник ввода для чтения объекта
-     * @throws Exception если произошла ошибка ввода
-     */
     @Override
     public void execute(String[] args, InputProvider provider) throws Exception {
         if (!validateArgs(args, 1, "укажите ключ. Использование: replace_if_lowe <key>")) return;
@@ -51,11 +31,6 @@ public class ReplaceIfLowerCommand extends AbstractCommand {
         }
     }
 
-    /**
-     * Возвращает описание команды.
-     *
-     * @return описание команды
-     */
     @Override
     public String getDescription() {
         return "заменить значение по ключу, если новое значение меньше старого";

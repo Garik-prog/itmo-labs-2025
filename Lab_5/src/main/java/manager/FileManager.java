@@ -17,9 +17,6 @@ import java.util.Scanner;
  * Менеджер для работы с файлами. Отвечает за загрузку коллекции из XML-файла
  * и сохранение коллекции в XML-файл.
  * Использует Scanner для чтения и BufferedOutputStream для записи.
- *
- * @see CollectionManager
- * @see Flat
  */
 public class FileManager {
 
@@ -43,14 +40,18 @@ public class FileManager {
      * Использует простой парсинг строк (не XML-парсер).
      *
      * @return загруженная коллекция LinkedHashMap
-     * @throws IOException если произошла ошибка чтения
+     * @throws IOException если произошла ошибка чтения или отсутствуют обязательные поля
      */
     public LinkedHashMap<String, Flat> load() throws IOException {
         LinkedHashMap<String, Flat> map = new LinkedHashMap<>();
         File file = new File(filename);
-        if (!file.exists()) return map;
+        System.out.println("Загрузка из файла: " + file.getAbsolutePath());
 
-        // Чтение всего файла в строку через Scanner
+        if (!file.exists()) {
+            System.out.println("Файл не существует, возвращаем пустую коллекцию");
+            return map;
+        }
+
         StringBuilder content = new StringBuilder();
         try (Scanner scanner = new Scanner(file, StandardCharsets.UTF_8)) {
             while (scanner.hasNextLine()) {
@@ -59,24 +60,24 @@ public class FileManager {
         }
 
         String xml = content.toString();
-
-        // Разбиваем по закрывающему тегу </flat>
         String[] flats = xml.split("</flat>");
-        for (String flatPart : flats) {
-            if (!flatPart.contains("<flat")) continue;
 
-            // Извлечение ключа из атрибута key="..."
+        for (String flatPart : flats) {
+            if (!flatPart.contains("<flat") || !flatPart.contains("key=\"")) continue;
+
             String key = extractSimple(flatPart, "key=\"", "\"");
             if (key == null) continue;
 
             Flat flat = new Flat();
 
-            // Извлечение всех полей
+            // id
             String idStr = extractSimple(flatPart, "<id>", "</id>");
             if (idStr != null) flat.setId(Integer.parseInt(idStr));
 
+            // name
             flat.setName(extractSimple(flatPart, "<name>", "</name>"));
 
+            // coordinates
             Coordinates coords = new Coordinates();
             String xStr = extractSimple(flatPart, "<x>", "</x>");
             String yStr = extractSimple(flatPart, "<y>", "</y>");
@@ -84,6 +85,7 @@ public class FileManager {
             if (yStr != null) coords.setY(Long.parseLong(yStr));
             flat.setCoordinates(coords);
 
+            // creationDate
             String dateStr = extractSimple(flatPart, "<creationDate>", "</creationDate>");
             if (dateStr != null) {
                 try {
@@ -93,21 +95,30 @@ public class FileManager {
                 }
             }
 
+            // area — теперь обязательное поле
             String areaStr = extractSimple(flatPart, "<area>", "</area>");
-            if (areaStr != null) flat.setArea(Long.parseLong(areaStr));
+            if (areaStr == null) {
+                throw new IOException("Отсутствует обязательное поле area в XML для элемента с ключом " + key);
+            }
+            flat.setArea(Long.parseLong(areaStr));
 
+            // numberOfRooms
             String roomsStr = extractSimple(flatPart, "<numberOfRooms>", "</numberOfRooms>");
             if (roomsStr != null) flat.setNumberOfRooms(Integer.parseInt(roomsStr));
 
+            // furnish
             String furnishStr = extractSimple(flatPart, "<furnish>", "</furnish>");
             if (furnishStr != null) flat.setFurnish(Furnish.valueOf(furnishStr));
 
+            // view
             String viewStr = extractSimple(flatPart, "<view>", "</view>");
             if (viewStr != null) flat.setView(View.valueOf(viewStr));
 
+            // transport
             String transportStr = extractSimple(flatPart, "<transport>", "</transport>");
             if (transportStr != null) flat.setTransport(Transport.valueOf(transportStr));
 
+            // house
             House house = new House();
             house.setName(extractSimple(flatPart, "<houseName>", "</houseName>"));
             String yearStr = extractSimple(flatPart, "<houseYear>", "</houseYear>");
@@ -160,8 +171,7 @@ public class FileManager {
             sb.append("        <x>").append(f.getCoordinates().getX()).append("</x>\n");
             sb.append("        <y>").append(f.getCoordinates().getY()).append("</y>\n");
             sb.append("        <creationDate>").append(dateFormat.format(f.getCreationDate())).append("</creationDate>\n");
-            if (f.getArea() != null)
-                sb.append("        <area>").append(f.getArea()).append("</area>\n");
+            sb.append("        <area>").append(f.getArea()).append("</area>\n"); // всегда пишем
             sb.append("        <numberOfRooms>").append(f.getNumberOfRooms()).append("</numberOfRooms>\n");
             if (f.getFurnish() != null)
                 sb.append("        <furnish>").append(f.getFurnish()).append("</furnish>\n");

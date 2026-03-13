@@ -3,8 +3,8 @@ package models;
 import java.util.Date;
 
 /**
- * Основной класс коллекции. Хранит информацию о квартире.
- * Реализует интерфейс Comparable для естественной сортировки.
+ * Класс, представляющий квартиру в коллекции.
+ * Хранит все характеристики квартиры и обеспечивает естественную сортировку.
  *
  * @see Coordinates
  * @see House
@@ -14,34 +14,34 @@ import java.util.Date;
  */
 public class Flat implements Comparable<Flat> {
 
-    /** Уникальный идентификатор. Генерируется автоматически. */
+    /** Уникальный идентификатор квартиры (генерируется автоматически, > 0) */
     private int id;
 
-    /** Название квартиры. Не может быть null или пустым. */
+    /** Название квартиры (не может быть null или пустым) */
     private String name;
 
-    /** Координаты квартиры. Не могут быть null. */
+    /** Координаты квартиры (не могут быть null) */
     private Coordinates coordinates;
 
-    /** Дата создания. Генерируется автоматически. Не может быть null. */
+    /** Дата создания записи (генерируется автоматически, не null) */
     private Date creationDate;
 
-    /** Площадь квартиры. Должна быть > 0. Может быть null. */
-    private Long area;
+    /** Площадь квартиры в квадратных метрах (обязательно > 0) */
+    private long area;
 
-    /** Количество комнат. Должно быть > 0. */
+    /** Количество комнат (обязательно > 0) */
     private int numberOfRooms;
 
-    /** Тип отделки. Может быть null. */
+    /** Тип отделки (может быть null) */
     private Furnish furnish;
 
-    /** Вид из окна. Может быть null. */
+    /** Вид из окна (может быть null) */
     private View view;
 
-    /** Доступность транспорта. Может быть null. */
+    /** Доступность транспорта (может быть null) */
     private Transport transport;
 
-    /** Дом, в котором находится квартира. Не может быть null. */
+    /** Дом, в котором находится квартира (не может быть null) */
     private House house;
 
     /**
@@ -51,18 +51,18 @@ public class Flat implements Comparable<Flat> {
     }
 
     /**
-     * Возвращает id квартиры.
+     * Возвращает идентификатор квартиры.
      *
-     * @return id
+     * @return id квартиры
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Устанавливает id квартиры.
+     * Устанавливает идентификатор квартиры.
      *
-     * @param id новый id
+     * @param id новый идентификатор
      */
     public void setId(int id) {
         this.id = id;
@@ -71,7 +71,7 @@ public class Flat implements Comparable<Flat> {
     /**
      * Возвращает название квартиры.
      *
-     * @return название
+     * @return название квартиры
      */
     public String getName() {
         return name;
@@ -80,7 +80,7 @@ public class Flat implements Comparable<Flat> {
     /**
      * Устанавливает название квартиры.
      *
-     * @param name новое название
+     * @param name новое название (не может быть null или пустым)
      */
     public void setName(String name) {
         this.name = name;
@@ -89,7 +89,7 @@ public class Flat implements Comparable<Flat> {
     /**
      * Возвращает координаты квартиры.
      *
-     * @return координаты
+     * @return объект Coordinates
      */
     public Coordinates getCoordinates() {
         return coordinates;
@@ -125,18 +125,18 @@ public class Flat implements Comparable<Flat> {
     /**
      * Возвращает площадь квартиры.
      *
-     * @return площадь или null
+     * @return площадь (всегда > 0)
      */
-    public Long getArea() {
+    public long getArea() {
         return area;
     }
 
     /**
      * Устанавливает площадь квартиры.
      *
-     * @param area новая площадь
+     * @param area новая площадь (должна быть > 0)
      */
-    public void setArea(Long area) {
+    public void setArea(long area) {
         this.area = area;
     }
 
@@ -152,7 +152,7 @@ public class Flat implements Comparable<Flat> {
     /**
      * Устанавливает количество комнат.
      *
-     * @param numberOfRooms новое количество
+     * @param numberOfRooms новое количество (должно быть > 0)
      */
     public void setNumberOfRooms(int numberOfRooms) {
         this.numberOfRooms = numberOfRooms;
@@ -170,7 +170,7 @@ public class Flat implements Comparable<Flat> {
     /**
      * Устанавливает тип отделки.
      *
-     * @param furnish новый тип
+     * @param furnish новый тип отделки (может быть null)
      */
     public void setFurnish(Furnish furnish) {
         this.furnish = furnish;
@@ -188,7 +188,7 @@ public class Flat implements Comparable<Flat> {
     /**
      * Устанавливает вид из окна.
      *
-     * @param view новый вид
+     * @param view новый вид (может быть null)
      */
     public void setView(View view) {
         this.view = view;
@@ -206,23 +206,23 @@ public class Flat implements Comparable<Flat> {
     /**
      * Устанавливает доступность транспорта.
      *
-     * @param transport новый транспорт
+     * @param transport новый транспорт (может быть null)
      */
     public void setTransport(Transport transport) {
         this.transport = transport;
     }
 
     /**
-     * Возвращает дом квартиры.
+     * Возвращает дом, в котором находится квартира.
      *
-     * @return дом
+     * @return объект House
      */
     public House getHouse() {
         return house;
     }
 
     /**
-     * Устанавливает дом квартиры.
+     * Устанавливает дом для квартиры.
      *
      * @param house новый дом
      */
@@ -232,48 +232,34 @@ public class Flat implements Comparable<Flat> {
 
     /**
      * Сравнивает текущую квартиру с другой для сортировки.
-     * Порядок сравнения:
-     * 1. Площадь (null считается меньше любого числа)
-     * 2. Количество комнат
-     * 3. Название
+     * Порядок сравнения: площадь -> количество комнат -> название.
      *
      * @param o другая квартира
-     * @return отрицательное число, если текущая меньше, положительное если больше, 0 если равны
+     * @return отрицательное, 0 или положительное число
      */
     @Override
     public int compareTo(Flat o) {
-        // Сравнение по area (null обрабатываем отдельно)
-        if (this.area == null && o.area == null) {
-            // равны по area
-        } else if (this.area == null) {
-            return -1;
-        } else if (o.area == null) {
-            return 1;
-        } else {
-            int areaComp = this.area.compareTo(o.area);
-            if (areaComp != 0) return areaComp;
-        }
+        int areaComp = Long.compare(this.area, o.area);
+        if (areaComp != 0) return areaComp;
 
-        // Сравнение по количеству комнат
         int roomsComp = Integer.compare(this.numberOfRooms, o.numberOfRooms);
         if (roomsComp != 0) return roomsComp;
 
-        // Сравнение по имени
         return this.name.compareTo(o.name);
     }
 
     /**
      * Возвращает строковое представление квартиры для вывода.
      *
-     * @return строковое представление
+     * @return краткая информация о квартире
      */
     @Override
     public String toString() {
-        return String.format("Flat[%d] '%s' | Комнат:%d | Площадь:%s | Вид:%s | Дом:%s",
+        return String.format("Flat[%d] '%s' | Комнат:%d | Площадь:%d | Вид:%s | Дом:%s",
                 id,
                 name.length() > 15 ? name.substring(0, 12) + "..." : name,
                 numberOfRooms,
-                area != null ? area + "м^2" : "не указано",
+                area,
                 view != null ? view : "не указан",
                 house != null ? house.toString() : "нет");
     }

@@ -8,11 +8,25 @@
         <creationDate>2026-02-13T21:00:26+03:00</creationDate>
         <area>8</area>
         <numberOfRooms>5</numberOfRooms>
-        <furnish>DESIGNER</furnish>
         <view>NORMAL</view>
         <transport>NORMAL</transport>
         <houseName>5</houseName>
         <houseYear>5</houseYear>
         <houseFlatsOnFloor>2</houseFlatsOnFloor>
+    </flat>
+    <flat key="key1">
+        <id>2</id>
+        <name>name</name>
+        <x>1</x>
+        <y>2</y>
+        <creationDate>2026-03-06T18:39:12+03:00</creationDate>
+        <area>100</area>
+        <numberOfRooms>3</numberOfRooms>
+        <furnish>DESIGNER</furnish>
+        <view>NORMAL</view>
+        <transport>FEW</transport>
+        <houseName>дом</houseName>
+        <houseYear>2000</houseYear>
+        <houseFlatsOnFloor>5</houseFlatsOnFloor>
     </flat>
 </flats>

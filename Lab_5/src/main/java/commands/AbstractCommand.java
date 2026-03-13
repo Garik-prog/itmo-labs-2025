@@ -8,9 +8,6 @@ import models.Flat;
 /**
  * Абстрактный базовый класс для команд, работающих с коллекцией.
  * Предоставляет общие методы для валидации аргументов и чтения объектов.
- *
- * @see Command
- * @see CollectionManager
  */
 public abstract class AbstractCommand implements Command {
 
@@ -43,7 +40,7 @@ public abstract class AbstractCommand implements Command {
     }
 
     /**
-     * Читает объект Flat из источника ввода.
+     * Читает объект Flat из источника ввода (полное создание).
      *
      * @param provider источник ввода
      * @return созданный объект Flat
@@ -52,5 +49,19 @@ public abstract class AbstractCommand implements Command {
     protected Flat readFlat(InputProvider provider) throws Exception {
         ObjectReader reader = new ObjectReader(provider);
         return reader.readFlat();
+    }
+
+    /**
+     * Читает значение одного поля для patch-обновления.
+     *
+     * @param provider источник ввода
+     * @param fieldNumber номер поля (1..11)
+     * @param current текущее значение для подсказки
+     * @return новое значение поля
+     * @throws Exception если ошибка ввода
+     */
+    protected Object readFieldValue(InputProvider provider, int fieldNumber, Object current) throws Exception {
+        ObjectReader reader = new ObjectReader(provider);
+        return reader.readFieldValue(fieldNumber, current);
     }
 }

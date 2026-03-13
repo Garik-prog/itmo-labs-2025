@@ -2,15 +2,14 @@ package models;
 
 /**
  * Класс, представляющий координаты квартиры.
- *
- * @see Flat
+ * Содержит две координаты: x и y.
  */
 public class Coordinates {
 
-    /** Координата X. Должна быть больше -728. */
+    /** Координата X (должна быть больше -728) */
     private int x;
 
-    /** Координата Y. Не может быть null. */
+    /** Координата Y (не может быть null) */
     private Long y;
 
     /**
@@ -31,7 +30,7 @@ public class Coordinates {
     /**
      * Устанавливает координату X.
      *
-     * @param x новое значение X
+     * @param x новое значение (должно быть > -728)
      */
     public void setX(int x) {
         this.x = x;
@@ -40,7 +39,7 @@ public class Coordinates {
     /**
      * Возвращает координату Y.
      *
-     * @return значение Y
+     * @return значение Y (не null)
      */
     public Long getY() {
         return y;
@@ -49,16 +48,16 @@ public class Coordinates {
     /**
      * Устанавливает координату Y.
      *
-     * @param y новое значение Y
+     * @param y новое значение (не null)
      */
     public void setY(Long y) {
         this.y = y;
     }
 
     /**
-     * Возвращает строковое представление координат.
+     * Возвращает строковое представление координат в формате (x, y).
      *
-     * @return строка в формате "(x, y)"
+     * @return строка вида "(x, y)"
      */
     @Override
     public String toString() {

@@ -59,7 +59,7 @@ public class ShowCommand implements Command {
             printLine(String.format("Координаты: (%d, %d)",
                     flat.getCoordinates().getX(), flat.getCoordinates().getY()));
 
-            String area = flat.getArea() != null ? flat.getArea() + " м²" : "---";
+            String area = flat.getArea() + " м²";
             String date = String.format("%02d.%02d.%d",
                     flat.getCreationDate().getDate(),
                     flat.getCreationDate().getMonth() + 1,

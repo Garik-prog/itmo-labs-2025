@@ -2,18 +2,17 @@ package models;
 
 /**
  * Класс, представляющий дом, в котором находится квартира.
- *
- * @see Flat
+ * Содержит название, год постройки и количество квартир на этаже.
  */
 public class House {
 
-    /** Название дома. Не может быть null. */
+    /** Название дома (не может быть null) */
     private String name;
 
-    /** Год постройки. Должен быть больше 0. */
+    /** Год постройки (должен быть > 0) */
     private int year;
 
-    /** Количество квартир на этаже. Должно быть больше 0. Может быть null. */
+    /** Количество квартир на этаже (должно быть > 0, может быть null) */
     private Integer numberOfFlatsOnFloor;
 
     /**
@@ -34,7 +33,7 @@ public class House {
     /**
      * Устанавливает название дома.
      *
-     * @param name новое название
+     * @param name новое название (не null)
      */
     public void setName(String name) {
         this.name = name;
@@ -52,7 +51,7 @@ public class House {
     /**
      * Устанавливает год постройки.
      *
-     * @param year новый год
+     * @param year новый год (> 0)
      */
     public void setYear(int year) {
         this.year = year;
@@ -70,7 +69,7 @@ public class House {
     /**
      * Устанавливает количество квартир на этаже.
      *
-     * @param numberOfFlatsOnFloor новое количество
+     * @param numberOfFlatsOnFloor новое количество (> 0 или null)
      */
     public void setNumberOfFlatsOnFloor(Integer numberOfFlatsOnFloor) {
         this.numberOfFlatsOnFloor = numberOfFlatsOnFloor;
@@ -79,7 +78,7 @@ public class House {
     /**
      * Возвращает строковое представление дома.
      *
-     * @return строка в формате "'название' год (этажей)"
+     * @return строка вида "'название' год (этажей)"
      */
     @Override
     public String toString() {

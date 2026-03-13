@@ -9,8 +9,6 @@ import java.util.Date;
 /**
  * Команда для добавления нового элемента в коллекцию с заданным ключом.
  * Генерирует id и дату создания автоматически.
- *
- * @see AbstractCommand
  */
 public class InsertCommand extends AbstractCommand {
 
@@ -25,11 +23,11 @@ public class InsertCommand extends AbstractCommand {
 
     /**
      * Выполняет команду insert.
-     * Проверяет наличие ключа, читает новый объект Flat,
-     * устанавливает id и дату создания, добавляет в коллекцию.
+     * Проверяет уникальность ключа, читает объект Flat, устанавливает id и дату,
+     * добавляет в коллекцию.
      *
      * @param args аргументы команды (ожидается ключ)
-     * @param provider источник ввода для чтения объекта
+     * @param provider источник ввода
      * @throws Exception если произошла ошибка ввода
      */
     @Override

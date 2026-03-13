@@ -1,0 +1,14 @@
+insert key1
+name
+1
+2
+100
+3
+DESIGNER
+NORMAL
+FEW
+дом
+2000
+5
+show
+save
