@@ -1,0 +1,39 @@
+20:53:29.067 [main] INFO  server.ServerNetwork - Серверный канал запущен на порту 12345
+20:53:29.068 [main] INFO  server.ServerNetwork - Сервер начал работу.
+20:53:53.019 [main] INFO  server.ServerNetwork - Новое подключение: /127.0.0.1:5429
+20:54:56.513 [main] DEBUG server.ServerNetwork - Получена команда info
+20:55:04.033 [main] DEBUG server.ServerNetwork - Получена команда show
+20:55:07.365 [main] DEBUG server.ServerNetwork - Получена команда history
+21:19:23.125 [main] DEBUG server.ServerNetwork - Получена команда insert
+21:19:41.700 [main] DEBUG server.ServerNetwork - Получена команда show
+21:19:54.720 [main] DEBUG server.ServerNetwork - Получена команда info
+21:27:32.461 [main] ERROR server.ServerNetwork - Ошибка ввода-вывода
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426)
+	at server.ServerNetwork.read(ServerNetwork.java:71)
+	at server.ServerNetwork.start(ServerNetwork.java:46)
+	at server.Server.main(Server.java:50)
+21:32:16.922 [main] INFO  server.ServerNetwork - Серверный канал запущен на порту 12345
+21:32:16.925 [main] INFO  server.ServerNetwork - Сервер начал работу.
+21:32:17.800 [main] INFO  server.ServerNetwork - Новое подключение: /127.0.0.1:14573
+21:32:31.836 [main] DEBUG server.ServerNetwork - Получена команда info
+21:34:19.065 [main] DEBUG server.ServerNetwork - Получена команда insert
+21:35:21.181 [main] DEBUG server.ServerNetwork - Получена команда info
+21:35:25.207 [main] DEBUG server.ServerNetwork - Получена команда show
+21:35:36.108 [Thread-0] INFO  server.Server - Коллекция сохранена.
+21:36:39.966 [Thread-0] INFO  server.Server - Коллекция сохранена при выходе.
+21:36:44.991 [main] INFO  server.ServerNetwork - Серверный канал запущен на порту 12345
+21:36:44.996 [main] INFO  server.ServerNetwork - Сервер начал работу.
+21:36:53.142 [Thread-0] INFO  server.Server - Коллекция сохранена.
+21:37:01.072 [main] INFO  server.ServerNetwork - Новое подключение: /127.0.0.1:14623
+21:37:07.994 [main] DEBUG server.ServerNetwork - Получена команда show
+21:38:31.375 [main] DEBUG server.ServerNetwork - Получена команда info
+21:38:35.046 [main] DEBUG server.ServerNetwork - Получена команда info
+11:52:02.407 [main] ERROR server.ServerNetwork - Ошибка ввода-вывода
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426)
+	at server.ServerNetwork.read(ServerNetwork.java:71)
+	at server.ServerNetwork.start(ServerNetwork.java:46)
+	at server.Server.main(Server.java:50)

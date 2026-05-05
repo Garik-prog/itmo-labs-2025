@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flats>
+    <flat key="flat1">
+        <id>1</id>
+        <name>wdc</name>
+        <x>20</x>
+        <y>50</y>
+        <creationDate>2026-05-04T21:34:19+03:00</creationDate>
+        <area>60</area>
+        <numberOfRooms>8</numberOfRooms>
+        <houseName>LOLO</houseName>
+        <houseYear>1000</houseYear>
+        <houseFlatsOnFloor>9</houseFlatsOnFloor>
+    </flat>
+</flats>

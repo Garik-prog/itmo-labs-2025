@@ -1,0 +1,27 @@
+<configuration>
+    <!-- Только файловый лог-аппендер, принудительно в UTF-8 -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>server.log</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Если нужен также вывод в консоль (с UTF-8), -->
+    <!-- раскомментируйте этот аппендер. Обратите внимание: -->
+    <!-- сама консоль должна принимать UTF-8 (см. настройку в ОС). -->
+    <!--
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    -->
+
+    <root level="debug">
+        <appender-ref ref="FILE"/>
+        <!-- <appender-ref ref="CONSOLE"/> -->
+    </root>
+</configuration>
