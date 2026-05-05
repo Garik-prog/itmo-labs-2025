@@ -41,7 +41,6 @@ public class CommandParser {
             case "save":
                 throw new UnsupportedOperationException("Команда save недоступна с клиента");
             case "execute_script":
-                // обрабатывается отдельно в Client
                 return null;
             case "exit":
                 return new ExitCommand();
