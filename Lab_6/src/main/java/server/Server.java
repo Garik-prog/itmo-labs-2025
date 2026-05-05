@@ -23,7 +23,7 @@ public class Server {
             System.out.println("Продолжаем с пустой коллекцией.");
         }
 
-        ServerNetwork serverNetwork = new ServerNetwork(12345, cm);
+        ServerNetwork serverNetwork = new ServerNetwork(5433, cm);
         new Thread(() -> {
             Scanner scanner = new Scanner(System.in);
             while (true) {
