@@ -45,7 +45,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Сборка server.jar -->
+            <!-- Серверный JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -54,12 +54,10 @@
                     <execution>
                         <id>shade-server</id>
                         <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
+                        <goals><goal>shade</goal></goals>
                         <configuration>
                             <finalName>server</finalName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <outputDirectory>${project.build.directory}/server-jar</outputDirectory>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>server.Server</mainClass>
@@ -70,13 +68,6 @@
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>client/**</exclude>
-                                        <exclude>Client.class</exclude>
-                                        <exclude>ClientNetwork.class</exclude>
-                                        <exclude>ConsoleInputProvider.class</exclude>
-                                        <exclude>FileInputProvider.class</exclude>
-                                        <exclude>InputProvider.class</exclude>
-                                        <exclude>ObjectReader.class</exclude>
-                                        <exclude>CommandParser.class</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
@@ -86,7 +77,7 @@
                 </executions>
             </plugin>
 
-            <!-- Сборка client.jar -->
+            <!-- Клиентский JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -95,12 +86,10 @@
                     <execution>
                         <id>shade-client</id>
                         <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
+                        <goals><goal>shade</goal></goals>
                         <configuration>
                             <finalName>client</finalName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <outputDirectory>${project.build.directory}/client-jar</outputDirectory>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>client.Client</mainClass>
@@ -111,13 +100,6 @@
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>server/**</exclude>
-                                        <exclude>Server.class</exclude>
-                                        <exclude>ServerNetwork.class</exclude>
-                                        <exclude>CollectionManager.class</exclude>
-                                        <exclude>DatabaseManager.class</exclude>
-                                        <exclude>UserManager.class</exclude>
-                                        <exclude>FileManager.class</exclude>
-                                        <exclude>ClientContext.class</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
