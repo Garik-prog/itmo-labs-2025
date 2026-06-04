@@ -1,4 +1,5 @@
 help
 info
 show
+lolo and pepe
 exit
