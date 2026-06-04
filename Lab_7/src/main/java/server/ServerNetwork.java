@@ -16,6 +16,7 @@ import java.util.concurrent.ForkJoinPool;
 
 public class ServerNetwork {
     private static final Logger logger = LoggerFactory.getLogger(ServerNetwork.class);
+
     private final int port;
     private final CollectionManager collectionManager;
     private final ForkJoinPool readPool = new ForkJoinPool();
@@ -45,14 +46,20 @@ public class ServerNetwork {
 
     public void stop() {
         running = false;
-        try { serverSocket.close(); } catch (IOException ignored) {}
+        try {
+            serverSocket.close();
+        } catch (IOException ignored) {
+        }
         readPool.shutdown();
         executorPool.shutdown();
         senderPool.shutdown();
     }
 
     private Response processCommand(Command cmd) {
-        collectionManager.addHistory(cmd.getLogin(), cmd.getName());
+        // Добавляем команду в историю, если она не помечена как пропускаемая
+        if (!cmd.isSkipHistory()) {
+            collectionManager.addHistory(cmd.getLogin(), cmd.getName());
+        }
 
         if (cmd instanceof RegisterCommand) {
             return cmd.execute(collectionManager);
@@ -60,7 +67,8 @@ public class ServerNetwork {
 
         String login = cmd.getLogin();
         String password = cmd.getPassword();
-        if (login == null || password == null || !collectionManager.getUserManager().authenticate(login, password)) {
+        if (login == null || password == null
+                || !collectionManager.getUserManager().authenticate(login, password)) {
             return new Response("Ошибка авторизации. Укажите корректный логин и пароль.", false);
         }
 
@@ -86,21 +94,31 @@ public class ServerNetwork {
 
     private class ClientHandler implements Runnable {
         private final Socket socket;
-        ClientHandler(Socket socket) { this.socket = socket; }
+
+        ClientHandler(Socket socket) {
+            this.socket = socket;
+        }
 
         @Override
         public void run() {
             try {
                 DataInputStream dis = new DataInputStream(socket.getInputStream());
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+
                 while (!socket.isClosed()) {
                     int length;
-                    try { length = dis.readInt(); } catch (EOFException | SocketException e) { break; }
+                    try {
+                        length = dis.readInt();
+                    } catch (EOFException | SocketException e) {
+                        break;
+                    }
                     byte[] data = new byte[length];
                     dis.readFully(data);
+
                     ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
                     Command cmd = (Command) ois.readObject();
                     logger.debug("Получена команда: {} от {}", cmd.getName(), cmd.getLogin());
+
                     executorPool.submit(() -> {
                         Response resp = processCommand(cmd);
                         senderPool.submit(() -> sendResponse(dos, resp));
@@ -109,7 +127,10 @@ public class ServerNetwork {
             } catch (Exception e) {
                 logger.debug("Клиент отключился: {}", e.getMessage());
             } finally {
-                try { socket.close(); } catch (IOException ignored) {}
+                try {
+                    socket.close();
+                } catch (IOException ignored) {
+                }
             }
         }
     }
