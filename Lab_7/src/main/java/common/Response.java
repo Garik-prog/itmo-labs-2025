@@ -28,7 +28,7 @@ public class Response implements Serializable {
         this.success = success;
     }
 
-    public String message() { return message; }
-    public List<Flat> flats() { return flats; }
+    public String getMessage() { return message; }
+    public List<Flat> getFlats() { return flats; }
     public boolean isSuccess() { return success; }
 }

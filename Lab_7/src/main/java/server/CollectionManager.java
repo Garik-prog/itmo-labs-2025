@@ -127,7 +127,7 @@ public class CollectionManager {
 
     public void addHistory(String login, String cmd) {
         if (login == null) return;
-        lock.lock();
+            lock.lock();
         try {
             Deque<String> history = userHistory.get(login);
             if (history == null) {

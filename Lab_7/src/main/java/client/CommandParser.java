@@ -84,7 +84,7 @@ public class CommandParser {
         List<String> lines = new ArrayList<>();
         lines.add("Доступные команды:");
         for (Command cmd : commands) {
-            String line = String.format("  %-20s %-10s – %s", cmd.getName(), cmd.getArgs(), cmd.getDescription());
+            String line = String.format("  %-25s %-15s – %s", cmd.getName(), cmd.getArgs(), cmd.getDescription());
             lines.add(line);
         }
         return lines;

@@ -83,8 +83,8 @@ public class Client {
                 RegisterCommand reg = new RegisterCommand(login, password);
                 try {
                     Response r = network.sendCommand(reg);
-                    System.out.println(r.message());
-                    if (!r.message().contains("успешно")) continue;
+                    System.out.println(r.getMessage());
+                    if (!r.getMessage().contains("успешно")) continue;
                 } catch (Exception e) {
                     System.out.println("Ошибка связи: " + e.getMessage());
                     continue;
@@ -145,9 +145,9 @@ public class Client {
     }
 
     private static void outputResponse(Response resp) {
-        System.out.println(resp.message());
-        if (resp.flats() != null) {
-            for (common.models.Flat f : resp.flats()) {
+        System.out.println(resp.getMessage());
+        if (resp.getFlats() != null) {
+            for (common.models.Flat f : resp.getFlats()) {
                 System.out.println("  " + f);
             }
         }
