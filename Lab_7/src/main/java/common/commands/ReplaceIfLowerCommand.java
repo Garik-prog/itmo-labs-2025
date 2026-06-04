@@ -7,13 +7,20 @@ import java.sql.SQLException;
 
 public class ReplaceIfLowerCommand extends Command {
     private static final long serialVersionUID = 1L;
-    private final String key;
-    private final Flat newFlat;
+    private String key;
+    private Flat newFlat;
 
     public ReplaceIfLowerCommand(String key, Flat newFlat) {
         this.key = key;
         this.newFlat = newFlat;
     }
+
+    public ReplaceIfLowerCommand() {
+
+    }
+
+    public void setKey(String key) { this.key = key; }
+    public void setFlat(Flat flat) { this.newFlat = flat; }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -40,10 +47,8 @@ public class ReplaceIfLowerCommand extends Command {
 
     @Override
     public String getName() { return "replace_if_lower"; }
-
     @Override
     public String getArgs() { return "<key>"; }
-
     @Override
     public String getDescription() { return "заменить если новый меньше"; }
 }

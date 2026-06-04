@@ -7,11 +7,13 @@ import java.sql.SQLException;
 
 public class RemoveKeyCommand extends Command {
     private static final long serialVersionUID = 1L;
-    private final String key;
+    private String key;
 
     public RemoveKeyCommand(String key) {
         this.key = key;
     }
+
+    public void setKey(String key) { this.key = key; }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -31,10 +33,8 @@ public class RemoveKeyCommand extends Command {
 
     @Override
     public String getName() { return "remove_key"; }
-
     @Override
     public String getArgs() { return "<key>"; }
-
     @Override
     public String getDescription() { return "удалить по ключу"; }
 }

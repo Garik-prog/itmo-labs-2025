@@ -3,6 +3,7 @@ common/commands/ShowCommand.class
 common/commands/ReplaceIfLowerCommand.class
 server/Server.class
 client/FileInputProvider.class
+client/CommandParser$CommandFactory.class
 server/ServerNetwork$ClientHandler.class
 client/ObjectReader.class
 common/commands/CountByViewCommand.class

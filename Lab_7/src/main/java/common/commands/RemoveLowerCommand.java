@@ -8,11 +8,17 @@ import java.util.List;
 
 public class RemoveLowerCommand extends Command {
     private static final long serialVersionUID = 1L;
-    private final Flat flat;
+    private Flat flat;
 
     public RemoveLowerCommand(Flat flat) {
         this.flat = flat;
     }
+
+    public RemoveLowerCommand() {
+
+    }
+
+    public void setFlat(Flat flat) { this.flat = flat; }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -30,10 +36,8 @@ public class RemoveLowerCommand extends Command {
 
     @Override
     public String getName() { return "remove_lower"; }
-
     @Override
     public String getArgs() { return ""; }
-
     @Override
     public String getDescription() { return "удалить свои элементы меньше заданного"; }
 }

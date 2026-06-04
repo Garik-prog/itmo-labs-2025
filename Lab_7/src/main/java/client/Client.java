@@ -99,9 +99,9 @@ public class Client {
                     continue;
                 }
             }
-            // Проверка авторизации через InfoCommand
+
             InfoCommand info = new InfoCommand();
-            info.setSkipHistory(true);   // ← НЕ сохранять эту команду в историю
+            info.setSkipHistory(true);
             info.setCredentials(login, password);
             try {
                 Response r = network.sendCommand(info);

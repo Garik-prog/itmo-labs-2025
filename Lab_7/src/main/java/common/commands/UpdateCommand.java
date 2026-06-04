@@ -7,13 +7,20 @@ import java.sql.SQLException;
 
 public class UpdateCommand extends Command {
     private static final long serialVersionUID = 1L;
-    private final int id;
-    private final Flat newFlat;
+    private int id;
+    private Flat newFlat;
 
     public UpdateCommand(int id, Flat newFlat) {
         this.id = id;
         this.newFlat = newFlat;
     }
+
+    public UpdateCommand() {
+
+    }
+
+    public void setId(int id) { this.id = id; }
+    public void setFlat(Flat flat) { this.newFlat = flat; }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -38,10 +45,8 @@ public class UpdateCommand extends Command {
 
     @Override
     public String getName() { return "update"; }
-
     @Override
     public String getArgs() { return "<id>"; }
-
     @Override
     public String getDescription() { return "обновить элемент по id"; }
 }

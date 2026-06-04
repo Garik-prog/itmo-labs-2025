@@ -8,13 +8,20 @@ import java.util.Date;
 
 public class InsertCommand extends Command {
     private static final long serialVersionUID = 1L;
-    private final String key;
-    private final Flat flat;
+    private String key;
+    private Flat flat;
 
     public InsertCommand(String key, Flat flat) {
         this.key = key;
         this.flat = flat;
     }
+
+    public InsertCommand() {
+
+    }
+
+    public void setKey(String key) { this.key = key; }
+    public void setFlat(Flat flat) { this.flat = flat; }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -35,10 +42,8 @@ public class InsertCommand extends Command {
 
     @Override
     public String getName() { return "insert"; }
-
     @Override
     public String getArgs() { return "<key>"; }
-
     @Override
     public String getDescription() { return "добавить элемент"; }
 }
