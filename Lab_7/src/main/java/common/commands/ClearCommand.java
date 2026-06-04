@@ -2,7 +2,6 @@ package common.commands;
 
 import common.Response;
 import server.CollectionManager;
-
 import java.sql.SQLException;
 
 public class ClearCommand extends Command {
@@ -20,7 +19,11 @@ public class ClearCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "clear";
-    }
+    public String getName() { return "clear"; }
+
+    @Override
+    public String getArgs() { return ""; }
+
+    @Override
+    public String getDescription() { return "удалить свои элементы"; }
 }

@@ -3,7 +3,6 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,7 +29,11 @@ public class RemoveLowerCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "remove_lower";
-    }
+    public String getName() { return "remove_lower"; }
+
+    @Override
+    public String getArgs() { return ""; }
+
+    @Override
+    public String getDescription() { return "удалить свои элементы меньше заданного"; }
 }

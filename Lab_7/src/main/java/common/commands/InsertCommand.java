@@ -3,7 +3,6 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
-
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -35,7 +34,11 @@ public class InsertCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "insert";
-    }
+    public String getName() { return "insert"; }
+
+    @Override
+    public String getArgs() { return "<key>"; }
+
+    @Override
+    public String getDescription() { return "добавить элемент"; }
 }

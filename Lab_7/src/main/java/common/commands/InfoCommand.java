@@ -18,7 +18,11 @@ public class InfoCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "info";
-    }
+    public String getName() { return "info"; }
+
+    @Override
+    public String getArgs() { return ""; }
+
+    @Override
+    public String getDescription() { return "информация о коллекции"; }
 }

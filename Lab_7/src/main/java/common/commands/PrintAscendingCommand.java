@@ -3,7 +3,6 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
-
 import java.util.List;
 
 public class PrintAscendingCommand extends Command {
@@ -17,7 +16,11 @@ public class PrintAscendingCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "print_ascending";
-    }
+    public String getName() { return "print_ascending"; }
+
+    @Override
+    public String getArgs() { return ""; }
+
+    @Override
+    public String getDescription() { return "вывести в порядке возрастания"; }
 }

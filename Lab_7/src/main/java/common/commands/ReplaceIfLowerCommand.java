@@ -3,7 +3,6 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
-
 import java.sql.SQLException;
 
 public class ReplaceIfLowerCommand extends Command {
@@ -40,7 +39,11 @@ public class ReplaceIfLowerCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "replace_if_lower";
-    }
+    public String getName() { return "replace_if_lower"; }
+
+    @Override
+    public String getArgs() { return "<key>"; }
+
+    @Override
+    public String getDescription() { return "заменить если новый меньше"; }
 }

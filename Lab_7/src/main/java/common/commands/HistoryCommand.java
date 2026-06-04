@@ -2,7 +2,6 @@ package common.commands;
 
 import common.Response;
 import server.CollectionManager;
-
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -11,7 +10,7 @@ public class HistoryCommand extends Command {
 
     @Override
     public Response execute(CollectionManager cm) {
-        List<String> history = cm.getHistory();
+        List<String> history = cm.getHistory(getLogin());
         if (history.isEmpty()) return new Response("История пуста.");
         StringJoiner sj = new StringJoiner("\n", "Последние команды:\n", "");
         for (String cmd : history) sj.add(cmd);
@@ -19,7 +18,11 @@ public class HistoryCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "history";
-    }
+    public String getName() { return "history"; }
+
+    @Override
+    public String getArgs() { return ""; }
+
+    @Override
+    public String getDescription() { return "история команд"; }
 }

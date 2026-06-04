@@ -3,7 +3,6 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
-
 import java.sql.SQLException;
 
 public class RemoveKeyCommand extends Command {
@@ -31,7 +30,11 @@ public class RemoveKeyCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "remove_key";
-    }
+    public String getName() { return "remove_key"; }
+
+    @Override
+    public String getArgs() { return "<key>"; }
+
+    @Override
+    public String getDescription() { return "удалить по ключу"; }
 }

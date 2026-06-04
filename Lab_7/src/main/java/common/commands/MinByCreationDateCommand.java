@@ -3,7 +3,6 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
-
 import java.util.Optional;
 
 public class MinByCreationDateCommand extends Command {
@@ -17,7 +16,11 @@ public class MinByCreationDateCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "min_by_creation_date";
-    }
+    public String getName() { return "min_by_creation_date"; }
+
+    @Override
+    public String getArgs() { return ""; }
+
+    @Override
+    public String getDescription() { return "элемент с мин. датой создания"; }
 }

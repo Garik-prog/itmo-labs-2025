@@ -2,7 +2,6 @@ package common.commands;
 
 import common.Response;
 import server.CollectionManager;
-
 import java.io.Serializable;
 
 public abstract class Command implements Serializable {
@@ -15,15 +14,11 @@ public abstract class Command implements Serializable {
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
+    public String getLogin() { return login; }
+    public String getPassword() { return password; }
 
     public abstract Response execute(CollectionManager collectionManager);
-
     public abstract String getName();
+    public abstract String getArgs();
+    public abstract String getDescription();
 }

@@ -22,7 +22,11 @@ public class RegisterCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "register";
-    }
+    public String getName() { return "register"; }
+
+    @Override
+    public String getArgs() { return "<login> <password>"; }
+
+    @Override
+    public String getDescription() { return "регистрация нового пользователя"; }
 }

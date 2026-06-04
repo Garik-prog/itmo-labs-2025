@@ -3,7 +3,6 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
-
 import java.sql.SQLException;
 
 public class UpdateCommand extends Command {
@@ -38,7 +37,11 @@ public class UpdateCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "update";
-    }
+    public String getName() { return "update"; }
+
+    @Override
+    public String getArgs() { return "<id>"; }
+
+    @Override
+    public String getDescription() { return "обновить элемент по id"; }
 }

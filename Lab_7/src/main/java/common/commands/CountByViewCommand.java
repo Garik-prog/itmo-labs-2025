@@ -19,7 +19,11 @@ public class CountByViewCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "count_by_view";
-    }
+    public String getName() { return "count_by_view"; }
+
+    @Override
+    public String getArgs() { return "<view>"; }
+
+    @Override
+    public String getDescription() { return "количество по view"; }
 }

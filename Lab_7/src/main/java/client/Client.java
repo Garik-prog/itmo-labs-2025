@@ -2,7 +2,6 @@ package client;
 
 import common.Response;
 import common.commands.*;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,36 +15,28 @@ public class Client {
     public static void main(String[] args) throws IOException {
         String host = args.length > 0 ? args[0] : "localhost";
         int port = args.length > 1 ? Integer.parseInt(args[1]) : 5433;
-
         try (ClientNetwork network = new ClientNetwork(host, port);
              ConsoleInputProvider console = new ConsoleInputProvider()) {
-
             String[] credentials = authenticate(network, console);
             if (credentials == null) return;
-
             String login = credentials[0];
             String password = credentials[1];
-
             CommandParser parser = new CommandParser(console, login, password);
-
             while (true) {
                 System.out.print("[" + login + "]> ");
                 String line = console.readLine();
                 if (line == null) break;
                 line = line.trim();
                 if (line.isEmpty()) continue;
-
                 if (line.startsWith("execute_script ")) {
                     String scriptFile = line.substring("execute_script ".length()).trim();
                     executeScript(scriptFile, network, login, password);
                     continue;
                 }
-
                 if ("help".equals(line)) {
                     printHelp();
                     continue;
                 }
-
                 try {
                     Command cmd = parser.parseCommand(line);
                     if (cmd == null) continue;
@@ -66,7 +57,6 @@ public class Client {
         }
     }
 
-
     private static String[] authenticate(ClientNetwork network, ConsoleInputProvider console) throws IOException {
         while (true) {
             System.out.println("=== Добро пожаловать ===");
@@ -77,24 +67,18 @@ public class Client {
             String choiceLine = console.readLine();
             if (choiceLine == null) return null;
             String choice = choiceLine.trim();
-
             if ("3".equals(choice)) return null;
-
-
             if (!"1".equals(choice) && !"2".equals(choice)) {
                 System.out.println("Ошибка: введите 1, 2 или 3.");
                 continue;
             }
-
             System.out.print("Логин: ");
             String login = console.readLine();
             if (login == null) return null;
             login = login.trim();
-
             System.out.print("Пароль: ");
             String password = console.readLine();
             if (password == null) return null;
-
             if ("2".equals(choice)) {
                 RegisterCommand reg = new RegisterCommand(login, password);
                 try {
@@ -106,12 +90,11 @@ public class Client {
                     continue;
                 }
             }
-
             InfoCommand info = new InfoCommand();
             info.setCredentials(login, password);
             try {
                 Response r = network.sendCommand(info);
-                if (r.message().contains("авторизации")) {
+                if (!r.isSuccess()) {
                     System.out.println("Неверный логин или пароль. Попробуйте снова.");
                     continue;
                 }
@@ -171,21 +154,9 @@ public class Client {
     }
 
     private static void printHelp() {
-        System.out.println("Доступные команды:");
-        System.out.println("  help                       — справка");
-        System.out.println("  info                       — информация о коллекции");
-        System.out.println("  show                       — показать все элементы");
-        System.out.println("  insert <key>               — добавить элемент");
-        System.out.println("  update <id>                — обновить элемент по id");
-        System.out.println("  remove_key <key>           — удалить по ключу");
-        System.out.println("  clear                      — удалить свои элементы");
-        System.out.println("  execute_script <file>      — выполнить скрипт");
-        System.out.println("  exit                       — выйти");
-        System.out.println("  remove_lower               — удалить свои элементы меньше заданного");
-        System.out.println("  history                    — история команд");
-        System.out.println("  replace_if_lower <key>     — заменить если новый меньше");
-        System.out.println("  min_by_creation_date       — элемент с мин. датой создания");
-        System.out.println("  count_by_view <view>       — количество по view");
-        System.out.println("  print_ascending            — вывести в порядке возрастания");
+        List<String> lines = CommandParser.getHelpInfo();
+        for (String line : lines) {
+            System.out.println(line);
+        }
     }
 }

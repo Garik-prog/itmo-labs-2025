@@ -12,7 +12,11 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public String getName() {
-        return "help";
-    }
+    public String getName() { return "help"; }
+
+    @Override
+    public String getArgs() { return ""; }
+
+    @Override
+    public String getDescription() { return "справка"; }
 }
