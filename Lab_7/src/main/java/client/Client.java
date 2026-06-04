@@ -66,10 +66,7 @@ public class Client {
         }
     }
 
-    /**
-     * Handles registration / login flow.
-     * Returns {login, password} on success, null if user chose to exit.
-     */
+
     private static String[] authenticate(ClientNetwork network, ConsoleInputProvider console) throws IOException {
         while (true) {
             System.out.println("=== Добро пожаловать ===");
@@ -77,8 +74,15 @@ public class Client {
             System.out.println("2. Зарегистрироваться");
             System.out.println("3. Выйти");
             System.out.print("Выбор: ");
-            String choice = console.readLine();
-            if (choice == null || "3".equals(choice.trim())) return null;
+            String choiceLine = console.readLine();
+            if (choiceLine == null) return null;
+            String choice = choiceLine.trim();
+
+            if ("3".equals(choice)) return null;
+
+            if (!"1".equals(choice) && !"2".equals(choice)) {
+                System.out.println("Ошибка: введите 1, 2 или 3.");
+            }
 
             System.out.print("Логин: ");
             String login = console.readLine();
@@ -89,7 +93,7 @@ public class Client {
             String password = console.readLine();
             if (password == null) return null;
 
-            if ("2".equals(choice.trim())) {
+            if ("2".equals(choice)) {
                 RegisterCommand reg = new RegisterCommand(login, password);
                 try {
                     Response r = network.sendCommand(reg);
@@ -101,7 +105,6 @@ public class Client {
                 }
             }
 
-            // Verify credentials with info command
             InfoCommand info = new InfoCommand();
             info.setCredentials(login, password);
             try {
