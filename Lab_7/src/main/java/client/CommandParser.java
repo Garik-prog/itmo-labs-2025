@@ -1,7 +1,9 @@
 package client;
 
 import common.commands.*;
-import common.models.*;
+import common.models.Flat;
+import common.models.View;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -29,9 +31,12 @@ public class CommandParser {
 
     private Command buildCommand(String cmdName, String[] args) throws IOException {
         switch (cmdName) {
-            case "help":           return new HelpCommand();
-            case "info":           return new InfoCommand();
-            case "show":           return new ShowCommand();
+            case "help":
+                return new HelpCommand();
+            case "info":
+                return new InfoCommand();
+            case "show":
+                return new ShowCommand();
             case "insert":
                 if (args.length < 1) throw new IllegalArgumentException("Укажите ключ");
                 return new InsertCommand(args[0], readFlat());
@@ -41,19 +46,26 @@ public class CommandParser {
             case "remove_key":
                 if (args.length < 1) throw new IllegalArgumentException("Укажите ключ");
                 return new RemoveKeyCommand(args[0]);
-            case "clear":          return new ClearCommand();
-            case "execute_script": return null;
-            case "exit":           return new ExitCommand();
-            case "remove_lower":   return new RemoveLowerCommand(readFlat());
-            case "history":        return new HistoryCommand();
+            case "clear":
+                return new ClearCommand();
+            case "execute_script":
+                return null;
+            case "exit":
+                return new ExitCommand();
+            case "remove_lower":
+                return new RemoveLowerCommand(readFlat());
+            case "history":
+                return new HistoryCommand();
             case "replace_if_lower":
                 if (args.length < 1) throw new IllegalArgumentException("Укажите ключ");
                 return new ReplaceIfLowerCommand(args[0], readFlat());
-            case "min_by_creation_date": return new MinByCreationDateCommand();
+            case "min_by_creation_date":
+                return new MinByCreationDateCommand();
             case "count_by_view":
                 if (args.length < 1) throw new IllegalArgumentException("Укажите view");
                 return new CountByViewCommand(View.valueOf(args[0].toUpperCase()));
-            case "print_ascending": return new PrintAscendingCommand();
+            case "print_ascending":
+                return new PrintAscendingCommand();
             case "save":
                 throw new UnsupportedOperationException("Команда save недоступна — данные хранятся в БД.");
             default:

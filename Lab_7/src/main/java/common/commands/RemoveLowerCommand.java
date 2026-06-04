@@ -3,6 +3,7 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,7 +11,9 @@ public class RemoveLowerCommand extends Command {
     private static final long serialVersionUID = 1L;
     private final Flat flat;
 
-    public RemoveLowerCommand(Flat flat) { this.flat = flat; }
+    public RemoveLowerCommand(Flat flat) {
+        this.flat = flat;
+    }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -27,5 +30,7 @@ public class RemoveLowerCommand extends Command {
     }
 
     @Override
-    public String getName() { return "remove_lower"; }
+    public String getName() {
+        return "remove_lower";
+    }
 }

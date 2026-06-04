@@ -22,5 +22,7 @@ public class RegisterCommand extends Command {
     }
 
     @Override
-    public String getName() { return "register"; }
+    public String getName() {
+        return "register";
+    }
 }

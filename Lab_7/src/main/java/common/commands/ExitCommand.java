@@ -12,5 +12,7 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public String getName() { return "exit"; }
+    public String getName() {
+        return "exit";
+    }
 }

@@ -10,13 +10,15 @@ public class InfoCommand extends Command {
     public Response execute(CollectionManager cm) {
         String info = String.format(
                 "Тип коллекции: LinkedHashMap<String, Flat>\n" +
-                "Дата инициализации: %s\n" +
-                "Количество элементов: %d",
+                        "Дата инициализации: %s\n" +
+                        "Количество элементов: %d",
                 cm.getInitializationDate().toString(),
                 cm.getSize());
         return new Response(info);
     }
 
     @Override
-    public String getName() { return "info"; }
+    public String getName() {
+        return "info";
+    }
 }

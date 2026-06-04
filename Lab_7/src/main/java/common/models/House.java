@@ -8,14 +8,32 @@ public class House implements Serializable {
     private int year;
     private Integer numberOfFlatsOnFloor;
 
-    public House() {}
+    public House() {
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public int getYear() { return year; }
-    public void setYear(int year) { this.year = year; }
-    public Integer getNumberOfFlatsOnFloor() { return numberOfFlatsOnFloor; }
-    public void setNumberOfFlatsOnFloor(Integer n) { this.numberOfFlatsOnFloor = n; }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public Integer getNumberOfFlatsOnFloor() {
+        return numberOfFlatsOnFloor;
+    }
+
+    public void setNumberOfFlatsOnFloor(Integer n) {
+        this.numberOfFlatsOnFloor = n;
+    }
 
     @Override
     public String toString() {

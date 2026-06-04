@@ -3,6 +3,7 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
+
 import java.sql.SQLException;
 
 public class UpdateCommand extends Command {
@@ -37,5 +38,7 @@ public class UpdateCommand extends Command {
     }
 
     @Override
-    public String getName() { return "update"; }
+    public String getName() {
+        return "update";
+    }
 }

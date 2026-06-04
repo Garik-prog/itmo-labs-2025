@@ -12,8 +12,12 @@ public class FileInputProvider implements InputProvider {
     }
 
     @Override
-    public String readLine() { return scanner.hasNextLine() ? scanner.nextLine() : null; }
+    public String readLine() {
+        return scanner.hasNextLine() ? scanner.nextLine() : null;
+    }
 
     @Override
-    public void close() { scanner.close(); }
+    public void close() {
+        scanner.close();
+    }
 }

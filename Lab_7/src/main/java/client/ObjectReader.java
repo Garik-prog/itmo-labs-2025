@@ -1,12 +1,15 @@
 package client;
 
 import common.models.*;
+
 import java.io.IOException;
 
 public class ObjectReader {
     private final InputProvider provider;
 
-    public ObjectReader(InputProvider provider) { this.provider = provider; }
+    public ObjectReader(InputProvider provider) {
+        this.provider = provider;
+    }
 
     public Flat readFlat() throws IOException {
         Flat flat = new Flat();
@@ -15,7 +18,10 @@ public class ObjectReader {
             System.out.print("Введите name (не пустая строка): ");
             String name = provider.readLine();
             if (name == null) throw new IOException("Неожиданный конец ввода");
-            if (name.trim().isEmpty()) { System.out.println("Имя не может быть пустым."); continue; }
+            if (name.trim().isEmpty()) {
+                System.out.println("Имя не может быть пустым.");
+                continue;
+            }
             flat.setName(name.trim());
             break;
         }
@@ -32,7 +38,9 @@ public class ObjectReader {
                 if (area <= 0) throw new NumberFormatException();
                 flat.setArea(area);
                 break;
-            } catch (NumberFormatException e) { System.out.println("Ошибка: введите целое положительное число."); }
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: введите целое положительное число.");
+            }
         }
 
         while (true) {
@@ -44,7 +52,9 @@ public class ObjectReader {
                 if (rooms <= 0) throw new NumberFormatException();
                 flat.setNumberOfRooms(rooms);
                 break;
-            } catch (NumberFormatException e) { System.out.println("Ошибка: введите целое положительное число."); }
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: введите целое положительное число.");
+            }
         }
 
         flat.setFurnish(readEnum(Furnish.class, "furnish (DESIGNER, NONE, FINE, BAD, LITTLE; пусто=null)"));
@@ -68,14 +78,20 @@ public class ObjectReader {
                 if (x <= -728) throw new NumberFormatException();
                 c.setX(x);
                 break;
-            } catch (NumberFormatException e) { System.out.println("Ошибка: x должно быть > -728."); }
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: x должно быть > -728.");
+            }
         }
         while (true) {
             System.out.print("Введите y (целое число): ");
             String line = provider.readLine();
             if (line == null) throw new IOException("Неожиданный конец ввода");
-            try { c.setY(Long.parseLong(line.trim())); break; }
-            catch (NumberFormatException e) { System.out.println("Ошибка: введите целое число."); }
+            try {
+                c.setY(Long.parseLong(line.trim()));
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: введите целое число.");
+            }
         }
         return c;
     }
@@ -86,7 +102,10 @@ public class ObjectReader {
             System.out.print("Название дома (не пустое): ");
             String name = provider.readLine();
             if (name == null) throw new IOException("Неожиданный конец ввода");
-            if (name.trim().isEmpty()) { System.out.println("Название не может быть пустым."); continue; }
+            if (name.trim().isEmpty()) {
+                System.out.println("Название не может быть пустым.");
+                continue;
+            }
             h.setName(name.trim());
             break;
         }
@@ -99,19 +118,26 @@ public class ObjectReader {
                 if (year <= 0) throw new NumberFormatException();
                 h.setYear(year);
                 break;
-            } catch (NumberFormatException e) { System.out.println("Ошибка: введите целое положительное число."); }
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: введите целое положительное число.");
+            }
         }
         while (true) {
             System.out.print("Квартир на этаже (целое >0, или пусто=null): ");
             String line = provider.readLine();
             if (line == null) throw new IOException("Неожиданный конец ввода");
-            if (line.trim().isEmpty()) { h.setNumberOfFlatsOnFloor(null); break; }
+            if (line.trim().isEmpty()) {
+                h.setNumberOfFlatsOnFloor(null);
+                break;
+            }
             try {
                 int n = Integer.parseInt(line.trim());
                 if (n <= 0) throw new NumberFormatException();
                 h.setNumberOfFlatsOnFloor(n);
                 break;
-            } catch (NumberFormatException e) { System.out.println("Ошибка: введите целое положительное число."); }
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: введите целое положительное число.");
+            }
         }
         return h;
     }
@@ -122,8 +148,11 @@ public class ObjectReader {
             String line = provider.readLine();
             if (line == null) throw new IOException("Неожиданный конец ввода");
             if (line.trim().isEmpty()) return null;
-            try { return Enum.valueOf(enumClass, line.trim().toUpperCase()); }
-            catch (IllegalArgumentException e) { System.out.println("Ошибка: недопустимое значение."); }
+            try {
+                return Enum.valueOf(enumClass, line.trim().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: недопустимое значение.");
+            }
         }
     }
 }

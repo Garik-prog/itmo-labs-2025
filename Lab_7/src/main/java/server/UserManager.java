@@ -7,7 +7,9 @@ import java.security.NoSuchAlgorithmException;
 public class UserManager {
     private final DatabaseManager db;
 
-    public UserManager(DatabaseManager db) { this.db = db; }
+    public UserManager(DatabaseManager db) {
+        this.db = db;
+    }
 
     public static String md5(String input) {
         try {

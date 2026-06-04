@@ -1,3 +1,3 @@
 package common.models;
 
-public enum View { BAD, NORMAL, GOOD; }
+public enum View {BAD, NORMAL, GOOD}

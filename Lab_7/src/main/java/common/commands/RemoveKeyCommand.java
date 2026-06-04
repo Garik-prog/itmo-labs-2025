@@ -3,13 +3,16 @@ package common.commands;
 import common.Response;
 import common.models.Flat;
 import server.CollectionManager;
+
 import java.sql.SQLException;
 
 public class RemoveKeyCommand extends Command {
     private static final long serialVersionUID = 1L;
     private final String key;
 
-    public RemoveKeyCommand(String key) { this.key = key; }
+    public RemoveKeyCommand(String key) {
+        this.key = key;
+    }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -28,5 +31,7 @@ public class RemoveKeyCommand extends Command {
     }
 
     @Override
-    public String getName() { return "remove_key"; }
+    public String getName() {
+        return "remove_key";
+    }
 }

@@ -8,7 +8,9 @@ public class CountByViewCommand extends Command {
     private static final long serialVersionUID = 1L;
     private final View view;
 
-    public CountByViewCommand(View view) { this.view = view; }
+    public CountByViewCommand(View view) {
+        this.view = view;
+    }
 
     @Override
     public Response execute(CollectionManager cm) {
@@ -17,5 +19,7 @@ public class CountByViewCommand extends Command {
     }
 
     @Override
-    public String getName() { return "count_by_view"; }
+    public String getName() {
+        return "count_by_view";
+    }
 }

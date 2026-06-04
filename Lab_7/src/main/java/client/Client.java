@@ -15,7 +15,7 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
         String host = args.length > 0 ? args[0] : "localhost";
-        int port    = args.length > 1 ? Integer.parseInt(args[1]) : 5433;
+        int port = args.length > 1 ? Integer.parseInt(args[1]) : 5433;
 
         try (ClientNetwork network = new ClientNetwork(host, port);
              ConsoleInputProvider console = new ConsoleInputProvider()) {
@@ -23,7 +23,7 @@ public class Client {
             String[] credentials = authenticate(network, console);
             if (credentials == null) return;
 
-            String login   = credentials[0];
+            String login = credentials[0];
             String password = credentials[1];
 
             CommandParser parser = new CommandParser(console, login, password);
@@ -93,8 +93,8 @@ public class Client {
                 RegisterCommand reg = new RegisterCommand(login, password);
                 try {
                     Response r = network.sendCommand(reg);
-                    System.out.println(r.getMessage());
-                    if (!r.getMessage().contains("успешно")) continue;
+                    System.out.println(r.message());
+                    if (!r.message().contains("успешно")) continue;
                 } catch (Exception e) {
                     System.out.println("Ошибка связи: " + e.getMessage());
                     continue;
@@ -106,7 +106,7 @@ public class Client {
             info.setCredentials(login, password);
             try {
                 Response r = network.sendCommand(info);
-                if (r.getMessage().contains("авторизации")) {
+                if (r.message().contains("авторизации")) {
                     System.out.println("Неверный логин или пароль. Попробуйте снова.");
                     continue;
                 }
@@ -157,9 +157,9 @@ public class Client {
     }
 
     private static void outputResponse(Response resp) {
-        System.out.println(resp.getMessage());
-        if (resp.getFlats() != null) {
-            for (common.models.Flat f : resp.getFlats()) {
+        System.out.println(resp.message());
+        if (resp.flats() != null) {
+            for (common.models.Flat f : resp.flats()) {
                 System.out.println("  " + f);
             }
         }

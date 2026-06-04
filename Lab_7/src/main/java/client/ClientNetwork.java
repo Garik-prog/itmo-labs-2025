@@ -29,7 +29,10 @@ public class ClientNetwork implements AutoCloseable {
                 return;
             } catch (IOException e) {
                 if (--attempts == 0) throw e;
-                try { Thread.sleep(2000); } catch (InterruptedException ignored) {}
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ignored) {
+                }
             }
         }
     }
@@ -51,11 +54,16 @@ public class ClientNetwork implements AutoCloseable {
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(respData));
             return (Response) ois.readObject();
         } catch (IOException e) {
-            try { connect(); } catch (IOException ignored) {}
+            try {
+                connect();
+            } catch (IOException ignored) {
+            }
             throw e;
         }
     }
 
     @Override
-    public void close() throws IOException { socket.close(); }
+    public void close() throws IOException {
+        socket.close();
+    }
 }

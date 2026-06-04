@@ -3,7 +3,9 @@ package server;
 import common.models.*;
 
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class DatabaseManager {
     private final Connection connection;
@@ -18,29 +20,29 @@ public class DatabaseManager {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("CREATE SEQUENCE IF NOT EXISTS flat_id_seq");
             stmt.execute(
-                "CREATE TABLE IF NOT EXISTS users (" +
-                "    login VARCHAR(255) PRIMARY KEY," +
-                "    password_hash VARCHAR(32) NOT NULL" +
-                ")"
+                    "CREATE TABLE IF NOT EXISTS users (" +
+                            "    login VARCHAR(255) PRIMARY KEY," +
+                            "    password_hash VARCHAR(32) NOT NULL" +
+                            ")"
             );
             stmt.execute(
-                "CREATE TABLE IF NOT EXISTS flats (" +
-                "    id INTEGER PRIMARY KEY DEFAULT nextval('flat_id_seq')," +
-                "    map_key VARCHAR(255) NOT NULL," +
-                "    name VARCHAR(255) NOT NULL," +
-                "    coord_x INTEGER NOT NULL," +
-                "    coord_y BIGINT NOT NULL," +
-                "    creation_date TIMESTAMP NOT NULL," +
-                "    area BIGINT NOT NULL," +
-                "    number_of_rooms INTEGER NOT NULL," +
-                "    furnish VARCHAR(50)," +
-                "    view VARCHAR(50)," +
-                "    transport VARCHAR(50)," +
-                "    house_name VARCHAR(255)," +
-                "    house_year INTEGER," +
-                "    house_flats_on_floor INTEGER," +
-                "    owner_login VARCHAR(255) NOT NULL REFERENCES users(login)" +
-                ")"
+                    "CREATE TABLE IF NOT EXISTS flats (" +
+                            "    id INTEGER PRIMARY KEY DEFAULT nextval('flat_id_seq')," +
+                            "    map_key VARCHAR(255) NOT NULL," +
+                            "    name VARCHAR(255) NOT NULL," +
+                            "    coord_x INTEGER NOT NULL," +
+                            "    coord_y BIGINT NOT NULL," +
+                            "    creation_date TIMESTAMP NOT NULL," +
+                            "    area BIGINT NOT NULL," +
+                            "    number_of_rooms INTEGER NOT NULL," +
+                            "    furnish VARCHAR(50)," +
+                            "    view VARCHAR(50)," +
+                            "    transport VARCHAR(50)," +
+                            "    house_name VARCHAR(255)," +
+                            "    house_year INTEGER," +
+                            "    house_flats_on_floor INTEGER," +
+                            "    owner_login VARCHAR(255) NOT NULL REFERENCES users(login)" +
+                            ")"
             );
         }
     }
@@ -72,9 +74,9 @@ public class DatabaseManager {
     public int insertFlat(String key, Flat flat, String ownerLogin) throws SQLException {
         try (PreparedStatement ps = connection.prepareStatement(
                 "INSERT INTO flats(map_key, name, coord_x, coord_y, creation_date, area, " +
-                "number_of_rooms, furnish, view, transport, house_name, house_year, " +
-                "house_flats_on_floor, owner_login) " +
-                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id")) {
+                        "number_of_rooms, furnish, view, transport, house_name, house_year, " +
+                        "house_flats_on_floor, owner_login) " +
+                        "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id")) {
             ps.setString(1, key);
             ps.setString(2, flat.getName());
             ps.setInt(3, flat.getCoordinates().getX());
@@ -104,8 +106,8 @@ public class DatabaseManager {
     public boolean updateFlat(int id, Flat flat, String requesterLogin) throws SQLException {
         try (PreparedStatement ps = connection.prepareStatement(
                 "UPDATE flats SET name=?, coord_x=?, coord_y=?, area=?, number_of_rooms=?, " +
-                "furnish=?, view=?, transport=?, house_name=?, house_year=?, house_flats_on_floor=? " +
-                "WHERE id=? AND owner_login=?")) {
+                        "furnish=?, view=?, transport=?, house_name=?, house_year=?, house_flats_on_floor=? " +
+                        "WHERE id=? AND owner_login=?")) {
             ps.setString(1, flat.getName());
             ps.setInt(2, flat.getCoordinates().getX());
             ps.setLong(3, flat.getCoordinates().getY());
@@ -155,15 +157,18 @@ public class DatabaseManager {
         List<Integer> deleted = new ArrayList<>();
         try (PreparedStatement ps = connection.prepareStatement(
                 "DELETE FROM flats WHERE owner_login=? AND " +
-                "(area < ? OR (area = ? AND number_of_rooms < ?) OR " +
-                " (area = ? AND number_of_rooms = ? AND name < ?)) RETURNING id")) {
+                            "(area <  OR (area = ? AND number_of_rooms < ?) OR " +
+                        " (area = ? AND number_of_rooms = ? AND name < ?)) RETURNING id")) {
             long area = flat.getArea();
             int rooms = flat.getNumberOfRooms();
             String name = flat.getName();
             ps.setString(1, requesterLogin);
             ps.setLong(2, area);
-            ps.setLong(3, area); ps.setInt(4, rooms);
-            ps.setLong(5, area); ps.setInt(6, rooms); ps.setString(7, name);
+            ps.setLong(3, area);
+            ps.setInt(4, rooms);
+            ps.setLong(5, area);
+            ps.setInt(6, rooms);
+            ps.setString(7, name);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) deleted.add(rs.getInt(1));
         }
@@ -183,6 +188,7 @@ public class DatabaseManager {
 
     private Flat resultSetToFlat(ResultSet rs) throws SQLException {
         Flat flat = new Flat();
+
         flat.setId(rs.getInt("id"));
         flat.setName(rs.getString("name"));
 
