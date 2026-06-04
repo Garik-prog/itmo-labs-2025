@@ -9,7 +9,7 @@ public abstract class Command implements Serializable {
     private static final long serialVersionUID = 1L;
     private String login;
     private String password;
-    private transient boolean skipHistory = false;
+    private boolean skipHistory = false;  // ← убрали transient
 
     public void setCredentials(String login, String password) {
         this.login = login;
