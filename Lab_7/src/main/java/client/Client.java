@@ -80,8 +80,10 @@ public class Client {
 
             if ("3".equals(choice)) return null;
 
+
             if (!"1".equals(choice) && !"2".equals(choice)) {
                 System.out.println("Ошибка: введите 1, 2 или 3.");
+                continue;
             }
 
             System.out.print("Логин: ");
