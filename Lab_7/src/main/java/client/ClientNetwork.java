@@ -57,8 +57,9 @@ public class ClientNetwork implements AutoCloseable {
             try {
                 connect();
             } catch (IOException ignored) {
+                throw new IOException("Не удалось восстановить соединение с сервером. Команда не выполнена.", e);
             }
-            throw e;
+            throw new IOException("Соединение с сервером было потеряно. Пожалуйста, повторите команду.", e);
         }
     }
 
